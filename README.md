@@ -38,7 +38,7 @@ git branch --show-current
 7. **mpremote** (for stable uploads via build tasks):
 
 ```bash
-python -m pip install mpremote
+py -m pip install mpremote
 ```
 
 > **Note:** If you only use **mpremote** from the terminal or the **Upload via mpremote** build task, Python + mpremote are enough for that path. **Uploading/syncing the folder through the Pymakr UI still requires Node.js** (and the Pymakr extension).
@@ -53,10 +53,10 @@ The project already defines build tasks. Steps:
 4. Press:
    - **macOS:** `Cmd + Shift + B`
    - **Windows:** `Ctrl + Shift + B`
-5. Pick the upload task (`Upload via mpremote`, `Upload Lab1 via mpremote`, etc., depending on branch).
+5. Pick the upload task (`Upload main.py only`, `Upload Lab1 via mpremote`, etc., depending on branch).
 6. Enter the serial port when prompted:
    - macOS: e.g. `/dev/cu.usbmodem1234561`
-   - Windows: e.g. `COM3`, `COM4`
+   - Windows: e.g. `COM4` (check Device Manager → Ports)
 7. Wait until the task finishes; the board resets and runs `main.py`.
 
 ## 5) How to find the serial port

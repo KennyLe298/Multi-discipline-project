@@ -13,7 +13,12 @@
       }
     }
   },
+  "python.analysis.typeCheckingMode": "off",
+  "python.analysis.extraPaths": [
+    "../.micropython-stubs"
+  ],
   "python.analysis.diagnosticSeverityOverrides": {
-    "reportMissingImports": "none"
+    "reportMissingImports": "none",
+    "reportMissingModuleSource": "none"
   }
 }

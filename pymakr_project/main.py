@@ -150,7 +150,7 @@ event_manager.add_timer_event(60000, on_event_timer_callback_D_z_g_o_J)
 
 if True:
   display.scroll('YoLoFarm')
-  mqtt.connect_wifi('Kenny', 'konhonua')
+  mqtt.connect_wifi('ASUS', '201202c5')
   mqtt.connect_broker(server='mqtt.ohstem.vn', port=1883, username='LeHoang', password='')
   display.scroll('OK')
   ntptime.settime()

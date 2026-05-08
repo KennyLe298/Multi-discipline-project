@@ -42,13 +42,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, onViewChange, onE
           <History size={20} />
           History
         </button>
-
-        <button
-          className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-semibold text-sm w-full text-left text-on-surface-variant hover:bg-surface-container"
-        >
-          <Sprout size={20} />
-          Fields
-        </button>
       </nav>
 
       <div className="mt-auto px-4 space-y-4">

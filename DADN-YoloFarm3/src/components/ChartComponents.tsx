@@ -31,25 +31,25 @@ const fallbackLight = [
 ];
 
 const historicalHumidity = [
-  { date: '01 Oct', value: 60 },
-  { date: '04 Oct', value: 62 },
-  { date: '07 Oct', value: 58 },
-  { date: '10 Oct', value: 65 },
-  { date: '14 Oct', value: 78 },
-  { date: '17 Oct', value: 55 },
-  { date: '21 Oct', value: 72 },
-  { date: 'Today', value: 64 },
+  { time: '01 Oct', value: 60 },
+  { time: '04 Oct', value: 62 },
+  { time: '07 Oct', value: 58 },
+  { time: '10 Oct', value: 65 },
+  { time: '14 Oct', value: 78 },
+  { time: '17 Oct', value: 55 },
+  { time: '21 Oct', value: 72 },
+  { time: 'Today', value: 64 },
 ];
 
 const historicalLight = [
-  { date: '01 Oct', value: 30 },
-  { date: '04 Oct', value: 45 },
-  { date: '07 Oct', value: 35 },
-  { date: '10 Oct', value: 50 },
-  { date: '14 Oct', value: 42 },
-  { date: '17 Oct', value: 55 },
-  { date: '21 Oct', value: 38 },
-  { date: 'Today', value: 42.8 },
+  { time: '01 Oct', value: 30 },
+  { time: '04 Oct', value: 45 },
+  { time: '07 Oct', value: 35 },
+  { time: '10 Oct', value: 50 },
+  { time: '14 Oct', value: 42 },
+  { time: '17 Oct', value: 55 },
+  { time: '21 Oct', value: 38 },
+  { time: 'Today', value: 42.8 },
 ];
 
 interface ChartProps {
@@ -98,9 +98,11 @@ export const LightLineChart = ({ data }: ChartProps) => {
   );
 };
 
-export const LargeHumidityChart = () => (
+export const LargeHumidityChart = ({ data }: ChartProps) => {
+  const chartData = data && data.length > 0 ? data : historicalHumidity;
+  return (
   <ResponsiveContainer width="100%" height="100%">
-    <AreaChart data={historicalHumidity}>
+    <AreaChart data={chartData}>
       <defs>
         <linearGradient id="colorHum" x1="0" y1="0" x2="0" y2="1">
           <stop offset="5%" stopColor="#006399" stopOpacity={0.1}/>
@@ -116,7 +118,7 @@ export const LargeHumidityChart = () => (
         fill="url(#colorHum)"
       />
       <XAxis
-        dataKey="date"
+        dataKey="time"
         axisLine={false}
         tickLine={false}
         tick={{ fontSize: 10, fill: '#414941' }}
@@ -126,11 +128,14 @@ export const LargeHumidityChart = () => (
       />
     </AreaChart>
   </ResponsiveContainer>
-);
+  );
+};
 
-export const LargeLightChart = () => (
+export const LargeLightChart = ({ data }: ChartProps) => {
+  const chartData = data && data.length > 0 ? data : historicalLight;
+  return (
   <ResponsiveContainer width="100%" height="100%">
-    <AreaChart data={historicalLight}>
+    <AreaChart data={chartData}>
       <defs>
         <linearGradient id="colorLight" x1="0" y1="0" x2="0" y2="1">
           <stop offset="5%" stopColor="#644700" stopOpacity={0.1}/>
@@ -146,7 +151,7 @@ export const LargeLightChart = () => (
         fill="url(#colorLight)"
       />
       <XAxis
-        dataKey="date"
+        dataKey="time"
         axisLine={false}
         tickLine={false}
         tick={{ fontSize: 10, fill: '#414941' }}
@@ -156,4 +161,5 @@ export const LargeLightChart = () => (
       />
     </AreaChart>
   </ResponsiveContainer>
-);
+  );
+};

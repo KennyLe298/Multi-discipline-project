@@ -2,8 +2,19 @@ import React from 'react';
 import { Cloud, Radio, CheckCircle, Droplets, Sun } from 'lucide-react';
 import { LargeHumidityChart, LargeLightChart } from './ChartComponents';
 import { motion } from 'motion/react';
+import { useMqtt } from '../lib/useMqtt';
 
 export const HistoryView: React.FC = () => {
+  const { data } = useMqtt();
+
+  const avgHumidity = data.humidityHistory.length > 0 
+    ? (data.humidityHistory.reduce((acc, curr) => acc + curr.value, 0) / data.humidityHistory.length).toFixed(1)
+    : '64.2';
+
+  const avgLight = data.lightHistory.length > 0
+    ? (data.lightHistory.reduce((acc, curr) => acc + curr.value, 0) / data.lightHistory.length).toFixed(1)
+    : '42.8';
+
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -36,12 +47,12 @@ export const HistoryView: React.FC = () => {
               </div>
             </div>
             <div className="text-right">
-              <div className="text-3xl font-black font-headline text-secondary">64.2%</div>
+              <div className="text-3xl font-black font-headline text-secondary">{avgHumidity}%</div>
               <div className="text-[10px] font-label text-secondary font-bold uppercase tracking-wider">Avg. Monthly</div>
             </div>
           </div>
           <div className="h-64 w-full">
-            <LargeHumidityChart />
+            <LargeHumidityChart data={data.humidityHistory} />
           </div>
         </section>
 
@@ -58,12 +69,12 @@ export const HistoryView: React.FC = () => {
               </div>
             </div>
             <div className="text-right">
-              <div className="text-3xl font-black font-headline text-tertiary">42.8</div>
+              <div className="text-3xl font-black font-headline text-tertiary">{avgLight}</div>
               <div className="text-[10px] font-label text-tertiary font-bold uppercase tracking-wider">Avg. Daily kLux</div>
             </div>
           </div>
           <div className="h-64 w-full">
-            <LargeLightChart />
+            <LargeLightChart data={data.lightHistory} />
           </div>
         </section>
 

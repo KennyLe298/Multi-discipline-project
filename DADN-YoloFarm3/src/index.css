@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Public+Sans:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-headline: "Manrope", sans-serif;
+  --font-label: "Public Sans", sans-serif;
+
+  --color-primary: #2b5437;
+  --color-primary-container: #436d4d;
+  --color-on-primary: #ffffff;
+  
+  --color-secondary: #006399;
+  --color-secondary-container: #67bafd;
+  
+  --color-tertiary: #644700;
+  --color-tertiary-container: #835d00;
+  --color-tertiary-fixed: #ffdea7;
+
+  --color-surface: #f8faf9;
+  --color-surface-container-low: #f2f4f3;
+  --color-surface-container: #eceeed;
+  --color-surface-container-high: #e6e9e8;
+  --color-surface-container-highest: #e1e3e2;
+  --color-surface-container-lowest: #ffffff;
+  
+  --color-on-surface: #191c1c;
+  --color-on-surface-variant: #414941;
+  --color-outline-variant: #c1c9bf;
+  
+  --color-error: #ba1a1a;
+
+  --radius-xl: 0.75rem;
+}
+
+@layer base {
+  body {
+    @apply bg-surface-container-low text-on-surface font-sans antialiased;
+  }
+}
+
+.glass-effect {
+  @apply bg-surface/70 backdrop-blur-md;
+}
+
+.chart-gradient-humidity {
+  background: linear-gradient(180deg, rgba(0, 99, 153, 0.1) 0%, rgba(0, 99, 153, 0) 100%);
+}
+
+.chart-gradient-light {
+  background: linear-gradient(180deg, rgba(100, 71, 0, 0.1) 0%, rgba(100, 71, 0, 0) 100%);
+}

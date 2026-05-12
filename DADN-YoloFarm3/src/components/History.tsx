@@ -2,10 +2,10 @@ import React from 'react';
 import { Cloud, Radio, CheckCircle, Droplets, Sun } from 'lucide-react';
 import { LargeHumidityChart, LargeLightChart } from './ChartComponents';
 import { motion } from 'motion/react';
-import { useMqtt } from '../lib/useMqtt';
+import { useApi } from '../lib/useApi';
 
 export const HistoryView: React.FC = () => {
-  const { data } = useMqtt();
+  const { data } = useApi();
 
   const avgHumidity = data.humidityHistory.length > 0 
     ? (data.humidityHistory.reduce((acc, curr) => acc + curr.value, 0) / data.humidityHistory.length).toFixed(1)

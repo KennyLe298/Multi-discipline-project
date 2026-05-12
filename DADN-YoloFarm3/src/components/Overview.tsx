@@ -2,10 +2,10 @@ import React from 'react';
 import { Thermometer, Droplets, Sprout, Sun, Zap, Wifi, WifiOff } from 'lucide-react';
 import { HumidityBarChart, LightLineChart } from './ChartComponents';
 import { motion } from 'motion/react';
-import { useMqtt } from '../lib/useMqtt';
+import { useApi } from '../lib/useApi';
 
 export const Overview: React.FC = () => {
-  const { data, setPump } = useMqtt();
+  const { data, setPump } = useApi();
 
   const fmt = (v: number | null, decimals = 1) =>
     v === null ? '—' : Number(v).toFixed(decimals);
